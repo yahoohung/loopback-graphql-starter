@@ -1,0 +1,17 @@
+{
+    "loopback-component-explorer": {
+        "mountPath": "/explorer"
+    },
+    "loopback-graphql-server": {
+        "path": "/graphql",
+        "graphiqlPath": "/graphiql",
+        "subscriptionServer": {
+            "disable": true,
+            "port": 5000,
+            "options": {},
+            "socketOptions": {}
+        },
+        "modelMutationGroups": false,
+        "modelQueryGroups": true
+    }
+}

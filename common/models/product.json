@@ -1,0 +1,37 @@
+{
+    "name": "product",
+    "base": "PersistedModel",
+    "idInjection": true,
+    "options": {
+        "validateUpsert": true
+    },
+    "properties": {
+        "id": {
+            "type": "number",
+            "generated": true,
+            "id": true
+        },
+        "name": {
+            "type": "string",
+            "required": true
+        },
+        "price": {
+            "type": "number"
+        },
+        "create_at": {
+            "type": "date",
+            "required": true,
+            "defaultFn": "now"
+        }
+    },
+    "validations": [],
+    "relations": {
+        "brand": {
+            "type": "belongsTo",
+            "model": "brand",
+            "foreignKey": ""
+        }
+    },
+    "acls": [],
+    "methods": {}
+}

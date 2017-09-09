@@ -1,0 +1,29 @@
+{
+    "name": "brand",
+    "base": "PersistedModel",
+    "idInjection": true,
+    "options": {
+        "validateUpsert": true
+    },
+    "properties": {
+        "id": {
+            "type": "number",
+            "generated": true,
+            "id": true
+        },
+        "name": {
+            "type": "string",
+            "required": true
+        }
+    },
+    "validations": [],
+    "relations": {
+        "products": {
+            "type": "hasMany",
+            "model": "product",
+            "foreignKey": ""
+        }
+    },
+    "acls": [],
+    "methods": {}
+}
