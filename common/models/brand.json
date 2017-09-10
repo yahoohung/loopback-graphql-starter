@@ -1,29 +1,36 @@
 {
-    "name": "brand",
-    "base": "PersistedModel",
-    "idInjection": true,
-    "options": {
-        "validateUpsert": true
+  "name": "brand",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "id": {
+      "type": "number",
+      "id": true,
+      "generated": true
     },
-    "properties": {
-        "id": {
-            "type": "number",
-            "generated": true,
-            "id": true
-        },
-        "name": {
-            "type": "string",
-            "required": true
-        }
-    },
-    "validations": [],
-    "relations": {
-        "products": {
-            "type": "hasMany",
-            "model": "product",
-            "foreignKey": ""
-        }
-    },
-    "acls": [],
-    "methods": {}
+    "name": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "products": {
+      "type": "hasMany",
+      "model": "product",
+      "foreignKey": ""
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
+    }
+  ],
+  "methods": {}
 }

@@ -4,15 +4,20 @@
      return new Promise((resolve, reject) => {
          // ignore checking if does not enable auth
          if (model.app.isAuthEnabled) {
-             model.checkAccess(accessToken, id, method, ctx,
-                 ((err, allowed) => {
-                     if (err)
-                         reject(err);
-                     else if (allowed)
-                         resolve(allowed);
-                     else
-                         reject(`Access denied`);
-                 }));
+             if (!model.app.models.ACL) {
+                 console.log('ACL has not been setup, skipping access check.')
+                 resolve(true);
+             } else {
+                 model.checkAccess(accessToken, id, method, ctx,
+                     ((err, allowed) => {
+                         if (err)
+                             reject(err);
+                         else if (allowed)
+                             resolve(allowed);
+                         else
+                             reject(`ACCESS_DENIED`);
+                     }));
+             }
          } else {
              resolve(true);
          }

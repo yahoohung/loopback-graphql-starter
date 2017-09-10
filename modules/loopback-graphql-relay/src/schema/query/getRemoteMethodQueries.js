@@ -38,10 +38,11 @@ module.exports = function getRemoteMethodQueries(model, options) {
                     type: typeObj.type,
                     resolve: (__, args, context, info) => {
 
-                        const params = [];
+                        let params = {};
 
                         _.forEach(acceptingParams, (param, name) => {
-                            if (args[name]) params.push(args[name]);
+                            if (args[name] && Object.keys(args[name]).length > 0)
+                                params = _.merge(params, args[name]);
                         });
                         let modelId = args && args.id;
                         return checkAccess({
@@ -53,21 +54,13 @@ module.exports = function getRemoteMethodQueries(model, options) {
                                 options: options
                             })
                             .then(() => {
-                                var newparams = {}
-
-                                _.forEach(acceptingParams, (param, name) => {
-                                    if (args[name] && Object.keys(args[name]).length > 0)
-                                        newparams[name] = args[name]
-                                });
+                                let wrap = promisify(model[method.name](params, ctxOptions));
+                                let ctxOptions = { accessToken: context.req.accessToken }
 
                                 if (typeObj.list) {
-                                    console.log(1)
-
-                                    let wrap = promisify(model[method.name]({ where: { create_at: { gte: "2017-09-09" } } }));
                                     return connectionFromPromisedArray(wrap, args, model);
                                 } else {
-                                    console.log(2)
-                                    return model[method.name].apply(model, newparams);
+                                    return wrap;
                                 }
 
 
