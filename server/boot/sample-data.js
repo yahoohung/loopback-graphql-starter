@@ -13,7 +13,7 @@ module.exports = function(app) {
         testUser
     ], function(err, users) {
         User.login(testUser, function(err, accessToken) {
-            console.log('accessToken', accessToken)
+            console.log('Copy this access token for test: ', accessToken.id)
         })
 
     });
@@ -21,10 +21,9 @@ module.exports = function(app) {
     Brand.create([
         { name: 'Apple' }
     ], function(err, brand) {
-
         Product.create([
-            { 'name': 'iPhone 8 Plus', 'price': '9000', 'brandId': brand.id },
-            { 'name': 'iPhone 8', 'price': '9000', 'brandId': brand.id }
+            { 'name': 'iPhone 8 Plus', 'price': '9000', 'brandId': brand[0].id },
+            { 'name': 'iPhone 8', 'price': '7000', 'brandId': brand[0].id }
         ])
 
     });

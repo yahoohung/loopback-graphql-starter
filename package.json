@@ -1,6 +1,6 @@
 {
   "name": "loopback-graphql-starter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "server/server.js",
   "scripts": {
     "lint": "eslint .",
@@ -14,7 +14,7 @@
     "loopback": "^3.11.1",
     "loopback-boot": "^2.26.1",
     "loopback-component-explorer": "^5.0.0",
-    "loopback-graphql-server": "^1.0.0",
+    "loopback-graphql-server": "^1.0.1",
     "serve-favicon": "^2.4.3",
     "strong-error-handler": "^2.2.0"
   },
@@ -24,9 +24,9 @@
     "nsp": "^2.8.0"
   },
   "repository": {
-    "type": "",
-    "url": ""
+    "type": "git",
+    "url": "https://github.com/yahoohung/loopback-graphql-starter"
   },
-  "license": "UNLICENSED",
+  "license": "MIT",
   "description": "loopback-graphql-starter"
 }

@@ -14,10 +14,7 @@ You will see the following message on screen:
 ```
 Web server listening at: http://localhost:3000
 Browse your REST API at http://localhost:3000/explorer
-accessToken { ttl: 1209600,
-  userId: 1,
-  created: 2017-09-10T15:02:51.586Z,
-  id: 'FjAFET55TBFwwNTmVXO5QrM8zlNUAu6R30wmmecnH7Yd4SSyyaaPHTYovbCd53Fv' }
+Copy this access token for test:  6CBXkSWW5S2CzyEfi7oYmoFc8pDFLN1j91Ok7DlYMnxcDJCJi1DYEO9eiEEGdxcB
  ```
  
  Copy the access token and go to (http://localhost:3000/graphiql?access_token=[access_token]) to play the new game. Also you can go to (localhost:3000/explorer) to test the Rest API.
@@ -27,4 +24,52 @@ accessToken { ttl: 1209600,
  ```
 $ npm install -g loopback-cli
 $ lb model 
+```
+
+## Play with GraphQL
+Go to (http://localhost:3000/graphiql) and paste following query to run
+```
+// page 1, limit 1 item
+{
+  product{
+    productFind(options: {
+      offset:0, limit: 1
+    }) {
+      edges {
+        node {
+          name
+          price
+          brand{
+            name
+          }
+        }
+      }
+    }
+  }
+}
+```
+
+```
+// Get all products which name like 'iPhone'
+{
+  product{
+    productFind(filter:{
+      where: {
+        name: {
+          like: "iPhone"
+        }
+      }
+    }) {
+      edges {
+        node {
+          name
+          price
+          brand{
+            name
+          }
+        }
+      }
+    }
+  }
+}
 ```

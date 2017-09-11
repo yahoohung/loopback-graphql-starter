@@ -21,7 +21,7 @@
     "products": {
       "type": "hasMany",
       "model": "product",
-      "foreignKey": ""
+      "foreignKey": "brandId"
     }
   },
   "acls": [

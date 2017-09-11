@@ -29,7 +29,7 @@
         "brand": {
             "type": "belongsTo",
             "model": "brand",
-            "foreignKey": ""
+            "foreignKey": "brandId"
         }
     },
     "acls": [{
